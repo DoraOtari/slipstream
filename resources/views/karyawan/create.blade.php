@@ -10,7 +10,7 @@
                 <form action="{{ url('karyawan') }}" method="post">
                     @csrf
                     <x-input name="nama" type="text" label="Nama Karyawan" />
-                    <livewire:nik-otomatis :emails="$emails" />
+                    <livewire:nik-otomatis :emails="$emails"  />
                     <div class="mb-3">
                         <label  class="form-label">Jabatan</label>
                         <select name="jabatan_id" class="form-select">

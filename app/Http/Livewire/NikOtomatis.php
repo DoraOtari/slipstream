@@ -9,7 +9,7 @@ class NikOtomatis extends Component
 {
     public $emails, $nik, $user_id, $tgl_lahir;
 
-    public function mount($karyawan)
+    public function mount($karyawan = null)
     {
         if ($karyawan != null ) {
             $this->nik = $karyawan->nik;

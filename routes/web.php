@@ -57,7 +57,15 @@ Route::get('/test', function(){
 });
 
 Route::get('/gaji', function(){
-    return view('gaji.performa');
+    $karyawan = DB::table('karyawan')->where('user_id', auth()->user()->id)->first();
+    $presensi = DB::table('presensi')->orderBy('tanggal')
+                                    ->where('karyawan_id', $karyawan->id)
+                                    ->where('bulan', '08')
+                                    ->where('keterangan', 'masuk')
+                                    ->get();
+    $absen = $presensi->pluck('jam', 'tanggal');
+    // dd($absen);
+    return view('gaji.performa', ['absen' => $absen]);
 });
 
 Route::post('/gaji', function(){
